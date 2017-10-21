@@ -46,11 +46,11 @@ nav ul {
 }
 
 .menu a {
-    color: white;
+    color: #e5e5e5;
 }
 
 .menu>li>a:hover {
-    color: #F36E21;
+    color: #FF843C;
 }
 
 .menu>li>a {
@@ -142,7 +142,9 @@ nav ul {
 }
 
 .degrees h3 {
-    border-bottom: .5px solid white;
+    border-bottom: .1px solid #e5e5e5;
+    color: #0f0f0f;
+    font-weight: 500;
 }
 
 
