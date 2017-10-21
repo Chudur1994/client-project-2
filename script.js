@@ -9,6 +9,7 @@ const nav = document.querySelector('.top');
 function handleEnter() {
     // add the trigger-enter class to the selected li element
     $(this).addClass('trigger-enter');
+    $(this).children(':first').addClass('changeColor');
     /* after a small delay make the content inside the selected li
     visibile for a smooth looking effect*/
     setTimeout(() => $(this).hasClass('trigger-enter') && $(this).addClass('trigger-enter-active'), 150);
@@ -50,6 +51,7 @@ function handleLeave() {
     /* remove trigger-enter and trigger-enter-active classes when
     the mouse leaves the current li*/
     $(this).removeClass('trigger-enter trigger-enter-active');
+    $(this).children(':first').removeClass('changeColor');
     // remove dropdown background class
     $(background).removeClass('open');
 }
