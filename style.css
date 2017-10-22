@@ -185,8 +185,7 @@ nav ul {
   width: 100%;
 }
 
-.hero-content {
-}
+.hero-content {}
 
 .hero-title {
   color: white;
@@ -198,6 +197,9 @@ nav ul {
   line-height: 3em;
   background-color: rgba(255, 255, 255, .1);
   display: inline-block;
+  border-bottom: 4px solid transparent;
+  border-image: linear-gradient(45deg, #ff0, #f0f);
+  border-image-slice: 1;
 }
 
 .hero-title span {
@@ -233,9 +235,10 @@ nav ul {
   text-indent: 2em;
   padding-bottom: 2em;
   color: rgb(200, 200, 200);
-  text-align:left;
+  text-align: left;
 }
-.up, .down {
+
+/*.up, .down {
   position: absolute;
   width: 150px;
   height: 50px;
@@ -259,7 +262,7 @@ nav ul {
 .right {
   right: 0;
   border-right: 2px solid #F36E21;
-}
+}*/
 
 .quote {
   position: relative;
