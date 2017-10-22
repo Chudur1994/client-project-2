@@ -318,6 +318,38 @@ nav ul {
   width: 100px;
 }
 
+.arrow-down-container {
+  position: absolute;
+  left: 12rem;
+  color: #F36E21;
+  top: 23rem;
+}
+
+.arrow-down-text {
+  font-size: 1rem;
+}
+
+.arrow-down::after {
+  content: "";
+  width: .7rem;
+  height: .7rem;
+  position: absolute;
+  border-right: 2px solid rgb(200, 200, 200);
+  border-bottom: 2px solid rgb(200, 200, 200);
+  left: 4.7rem;
+  transform: rotate(45deg);
+  animation: 2.5s arrow infinite ease;
+}
+
+@keyframes arrow {
+  0%, 100% {
+    top: 20px;
+  }
+  50% {
+    top: 30px;
+  }
+}
+
 /*media queries*/
 
 @media (min-width: 1700px) {
