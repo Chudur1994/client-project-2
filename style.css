@@ -8,7 +8,7 @@
 }
 
 html {
-  font-size: 100%;
+  font-size: 70%;
 }
 
 #particles-js {
@@ -71,7 +71,7 @@ nav ul {
 
 .menu>li>a {
   display: inline-block;
-  padding: 1.250rem;
+  padding: 1.250em;
   margin-bottom: 0;
   color: #2d2d2d;
 }
@@ -86,12 +86,12 @@ nav ul {
   overflow: auto;
   padding: 1em;
   padding-top: 0;
-  top: -1.350rem;
+  top: -1.350em;
   border-radius: 2px;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  -webkit-transform: translateY(5.000rem);
-  transform: translateY(5.000rem);
+  -webkit-transform: translateY(5.000em);
+  transform: translateY(5.000em);
   will-change: opacity;
   display: none;
 }
@@ -130,7 +130,7 @@ nav ul {
 }
 
 .dropdown li a {
-  padding: .5rem 1rem .5rem .25rem;
+  padding: .5em 1em .5em .25em;
   width: 100%;
   border-left: 2px solid transparent;
 }
@@ -152,8 +152,8 @@ nav ul {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding-top: .5rem;
-  margin-bottom: 1rem;
+  padding-top: .5em;
+  margin-bottom: 1em;
 }
 
 .undergrad, .grad {
@@ -161,9 +161,9 @@ nav ul {
 }
 
 .degrees li a {
-  margin-top: .75rem;
-  font-size: .9rem;
-  padding-right: 2rem;
+  margin-top: .75em;
+  font-size: .9em;
+  padding-right: 2em;
 }
 
 .degrees h3 {
@@ -195,14 +195,14 @@ nav ul {
   color: white;
   position: relative;
   /*top: 8rem*/
-  top: 5rem;
+  top: 8rem;
   /*font-size: 1rem*/
-  font-size: .8rem;
+  font-size: 1rem;
   left: 0;
-  padding: 1.5rem;
-  /*padding-left: 5rem; */
+  padding: 2rem;
+  padding-left: 5rem;
   /*line-height: 3rem*/
-  line-height: 2.5rem;
+  line-height: 3rem;
   background-color: rgba(255, 255, 255, .1);
   display: inline-block;
   border-bottom: 4px solid transparent;
@@ -217,12 +217,12 @@ nav ul {
 .intro {
   position: absolute;
   /*width: 60rem*/
-  width: 50rem;
+  width: 60rem;
   padding: 1.5rem;
   /*font-size: 1.2rem*/
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   /*right: 10%*/
-  right: 5%;
+  right: 10%;
   top: 10rem;
   font-family: 'Roboto Slab', serif;
   background-color: rgba(255, 255, 255, .2);
@@ -321,6 +321,9 @@ nav ul {
 /*media queries*/
 
 @media (min-width: 1700px) {
+  html {
+    font-size: 100%;
+  }
   .hero-title {
     top: 8rem;
     font-size: 1rem;
