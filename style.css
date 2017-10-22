@@ -7,9 +7,13 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: 100%;
+}
+
 #particles-js {
   background-color: #323840;
-  height: 500px;
+  height: 30rem;
 }
 
 body {
@@ -29,7 +33,7 @@ a {
   position: relative;
 }
 
-nav, .hero-title, .intro-title h2 {
+nav, .hero-title, .intro-title {
   font-family: 'Raleway', sans-serif;
 }
 
@@ -67,7 +71,7 @@ nav ul {
 
 .menu>li>a {
   display: inline-block;
-  padding: 1.250em;
+  padding: 1.250rem;
   margin-bottom: 0;
   color: #2d2d2d;
 }
@@ -82,12 +86,12 @@ nav ul {
   overflow: auto;
   padding: 1em;
   padding-top: 0;
-  top: -1.350em;
+  top: -1.350rem;
   border-radius: 2px;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  -webkit-transform: translateY(5.000em);
-  transform: translateY(5.000em);
+  -webkit-transform: translateY(5.000rem);
+  transform: translateY(5.000rem);
   will-change: opacity;
   display: none;
 }
@@ -126,7 +130,7 @@ nav ul {
 }
 
 .dropdown li a {
-  padding: .5em 1em .5em .25em;
+  padding: .5rem 1rem .5rem .25rem;
   width: 100%;
   border-left: 2px solid transparent;
 }
@@ -148,8 +152,8 @@ nav ul {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding-top: .5em;
-  margin-bottom: 1em;
+  padding-top: .5rem;
+  margin-bottom: 1rem;
 }
 
 .undergrad, .grad {
@@ -157,9 +161,9 @@ nav ul {
 }
 
 .degrees li a {
-  margin-top: .75em;
-  font-size: .9em;
-  padding-right: 2em;
+  margin-top: .75rem;
+  font-size: .9rem;
+  padding-right: 2rem;
 }
 
 .degrees h3 {
@@ -173,7 +177,7 @@ nav ul {
 }
 
 .employment, .people, .resources {
-  width: 14em;
+  width: 14rem;
 }
 
 .logo {}
@@ -190,11 +194,15 @@ nav ul {
 .hero-title {
   color: white;
   position: relative;
-  top: 8em;
+  /*top: 8rem*/
+  top: 5rem;
+  /*font-size: 1rem*/
+  font-size: .8rem;
   left: 0;
-  padding: 2em;
-  padding-left: 5em;
-  line-height: 3em;
+  padding: 1.5rem;
+  /*padding-left: 5rem; */
+  /*line-height: 3rem*/
+  line-height: 2.5rem;
   background-color: rgba(255, 255, 255, .1);
   display: inline-block;
   border-bottom: 4px solid transparent;
@@ -208,12 +216,14 @@ nav ul {
 
 .intro {
   position: absolute;
-  width: 50em;
-  padding: 1em;
-  font-size: 1.2em;
-  right: 10%;
-  top: 10em;
-  color: black;
+  /*width: 60rem*/
+  width: 50rem;
+  padding: 1.5rem;
+  /*font-size: 1.2rem*/
+  font-size: 1.1rem;
+  /*right: 10%*/
+  right: 5%;
+  top: 10rem;
   font-family: 'Roboto Slab', serif;
   background-color: rgba(255, 255, 255, .2);
   -webkit-box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.75);
@@ -222,13 +232,13 @@ nav ul {
 }
 
 .intro-title {
-  margin-bottom: .25em;
-  font-size: 2em;
-  color: #d3d3d3;
+  margin-bottom: .35rem;
+  font-size: 2.2rem;
+  color: white;
   weight: 300;
   display: block;
-  background-color: #F36E21;
-  padding: .2em;
+  padding: 1rem;
+  text-align: center;
 }
 
 .intro-text {
@@ -238,10 +248,16 @@ nav ul {
   text-align: left;
 }
 
-/*.up, .down {
+.intro-title-container {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.up, .down {
   position: absolute;
-  width: 150px;
-  height: 50px;
+  width: 15px;
+  height: 15px;
 }
 
 .up {
@@ -262,7 +278,7 @@ nav ul {
 .right {
   right: 0;
   border-right: 2px solid #F36E21;
-}*/
+}
 
 .quote {
   position: relative;
@@ -300,4 +316,20 @@ nav ul {
 .test {
   display: inline-block;
   width: 100px;
+}
+
+/*media queries*/
+
+@media (min-width: 1700px) {
+  .hero-title {
+    top: 8rem;
+    font-size: 1rem;
+    padding-left: 5rem;
+    line-height: 3rem;
+  }
+  .intro {
+    width: 60rem;
+    font-size: 1.2rem;
+    right: 10%;
+  }
 }
