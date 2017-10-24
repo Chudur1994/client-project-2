@@ -374,6 +374,7 @@ nav ul {
     left: 10rem;
     color: white;
     top: 23rem;
+    padding: .5rem;
     text-align: center;
     -webkit-animation: arrow 1.5s ease-in-out infinite;
     animation: arrow 1.5s ease-in-out infinite;

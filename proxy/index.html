@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>340 p2 ex</title>
+    <script src="https://code.jquery.com/jquery-latest.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        //now what?
+        //api:  http://www.ist.rit.edu/api/
+        $(document).ready(function() {
+            var x = '';
+            myXHR('get', {
+                'path': '/about/'
+            }).done((json) => {
+                x += `<h2>${json.title}</h2>
+                      <p>${json.description}</p>
+                      <p>${json.quote}</p>
+                      <h4>${json.quoteAuthor}</h4>`;
+                $('#about').html(x);
+            }); //end myXHR
+
+            myXHR('get', {
+                'path': '/degrees/undergraduate/'
+            }).done((json) => {
+                var x = '';
+                //loop through undergraduate array
+                $.each(json.undergraduate, (i, item) => {
+                    x += `<h2>${item.title}(${item.degreeName.toUpperCase()})</h2>
+                          <p>${item.description}</p>
+                          <h3>Concentrations</h3>
+                          <ul>`;
+                    //loop through concentrations array
+                    $.each(item.concentrations, (i, item) => {
+                        x += `<li>${item}</li>`;
+                    });
+                    x += `</ul>`;
+                    $('#content').html(x);
+                });
+            }); //end myXHR
+
+            //show the faculty information
+            myXHR('get', {
+                'path': '/people/faculty/'
+            }).done((json) => {
+                var x = '';
+                $.each(json.faculty, (i, item) => {
+                    x += `<div onclick='facMore(this)' data-id='${item.username}' style='cursor:pointer;'>
+                          <h2>${item.name}</h2>
+                          <p>${item.title}</p>
+                          <img src='${item.imagePath}'/>
+                          <hr/>
+                          </div>`;
+                }); //end each
+                $('#people').html(x);
+            }); //end myXHR
+
+        }); //end document.ready
+
+        //add the facMore function outside of the document.ready
+        function facMore(who) {
+            //get the information out of the data-id attribute
+            var id = $(who).attr('data-id');
+
+            myXHR('get', {
+                'path': `/people/faculty/username=${id}`
+            }).done((json) => {
+                console.log(`facMore = ${json.interestArea}`);
+            });
+        } //end facMore
+
+        /* 
+            AJAX function to get information for us
+            AJAX utility 
+            t = get or post 
+            d = path : /about/ 
+        */
+        function myXHR(t, d) {
+            return $.ajax({
+                type: t,
+                //information will be changing often
+                cache: false,
+                async: true,
+                dataType: 'json',
+                url: 'proxy.php',
+                data: d,
+                //happens before sending information
+                beforeSend: function() {
+                    $('<img src="gears.gif" id="spinner" style="position:relative;top:50px;left:50px;z-index:2000"/>').appendTo("body");
+                }
+            }).always(function() {
+                //happens at end, no matter what
+                $("#spinner").remove();
+            }).fail(function() {
+                //handles failures
+                console.log(`Failure with ${d.path}`);
+            });
+            //end my XHR
+        }
+
+    </script>
+</head>
+
+<body>
+    <h2>IST Dept Site</h2>
+    <section id="people"></section>
+    <hr>
+    <section id="content"></section>
+    <hr>
+    <section id="about"></section>
+</body>
+
+</html>

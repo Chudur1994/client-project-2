@@ -67,6 +67,15 @@ $(document).ready(function () {
         topSpacing: 0
     });
 
+    // create h3 element to user later in degrees container
+    const concentration = $('<h3>Concentrations</h3>');
+    const concentrationArr = [{
+        
+    }
+        ['WEB APPLICATION DEVELOPMENT', 'MOBILE APPLICATION DEVELOPMENT', 'WEARABLE AND UBIQUITOUS COMPUTING', 'DATABASE', 'PROJECT LIFE CYCLE'],
+        ['WEB APPLICATION DEVELOPMENT', 'MOBILE APPLICATION DEVELOPMENT', 'WEARABLE AND UBIQUITOUS COMPUTING', 'DATABASE', 'PROJECT LIFE CYCLE']];
+
+    console.log(concentrationArr);
     // degrees functionality
     const degrees = $('.degrees-content-container');
 
@@ -90,7 +99,7 @@ $(document).ready(function () {
             });
         }
 
-        // reveals information about the clicked degree
+        // hide old information about the clicked degree
         const hideOld = function () {
             // move the degree name up by 3rems
             that.children(':first').css({
@@ -107,7 +116,7 @@ $(document).ready(function () {
             });
         }
 
-        // shows information about the selected degree
+        // shows new information about the selected degree
         const showNew = function () {
             // create concentrations title
             const concentration = $('<h3>Concentrations</h3>');
@@ -139,6 +148,7 @@ $(document).ready(function () {
                     "transition": "all .2s"
                 });
                 $(this).children().not(':first').each(function () {
+                    console.log($(this));
                     $(this).css({
                         "opacity": "1",
                         "transition": ".2s"
@@ -166,8 +176,9 @@ $(document).ready(function () {
 
     // add handler to degrees on click
     degrees.children().click(handleDegreeClick);
-
-
+    
+   getAbout();
+    
     // const populateImages = function() {
     //   const img = $('<img/>', {
     //     'class': 'test',
