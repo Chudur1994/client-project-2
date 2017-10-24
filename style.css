@@ -11,6 +11,13 @@ html {
     font-size: 70%;
 }
 
+nav,
+.hero-title,
+.intro-title,
+.degrees-container h2 {
+    font-family: 'Raleway', sans-serif;
+}
+
 #particles-js {
     background-color: #323840;
     height: 30rem;
@@ -26,17 +33,50 @@ a {
     text-decoration: none;
 }
 
-.header {
-    background-color: white;
-    border-bottom: 2px solid #F36E21;
-    z-index: 999 !important;
-    position: relative;
+input[type="text"],
+input[type="password"],
+textarea,
+select {
+    outline: none;
 }
 
-nav,
-.hero-title,
-.intro-title {
-    font-family: 'Raleway', sans-serif;
+.logo img {
+    width: 70px;
+}
+
+.logo {
+    position: absolute;
+    padding: 1.250rem;
+    left: 2rem;
+}
+
+.search-container {
+    position: absolute;
+    margin: 1rem;
+    right: 2rem;
+    top: 0;
+}
+
+.search {
+    padding: .3rem;
+    width: 10rem;
+    border-radius: 3px;
+    border: 1px solid rgb(155, 155, 155);
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+}
+
+.search:focus {
+    width: 15rem;
+    border-bottom: 1.5px solid #F36E21;
+    border-radius: 3px 3px 0 0;
+}
+
+.search-icon {
+    position: absolute;
+    right: 1rem;
+    top: .55rem;
+    color: rgb(155, 155, 155);
 }
 
 nav {
@@ -53,6 +93,18 @@ nav ul {
     justify-content: center;
 }
 
+.header {
+    background-color: white;
+    border-bottom: 2px solid #F36E21;
+    z-index: 999 !important;
+    position: relative;
+}
+
+.menu {
+    position: relative;
+    right: 5rem;
+}
+
 .menu li {
     position: relative;
     display: -webkit-box;
@@ -65,7 +117,6 @@ nav ul {
 
 .menu a {
     color: #2d2d2d;
-    font-size: 1.4em;
 }
 
 .menu>li>a:hover {
@@ -74,9 +125,9 @@ nav ul {
 
 .menu>li>a {
     display: inline-block;
-    padding: 1.250em;
-    margin-bottom: -.09em;
+    padding: 1.250rem;
     color: #2d2d2d;
+    font-size: 1.3rem;
 }
 
 .changeColor {
@@ -88,8 +139,8 @@ nav ul {
     position: absolute;
     overflow: auto;
     padding: .7em;
-    padding-top: 0;
-    top: 0;
+    padding-top: .5em;
+    top: -1rem;
     border-radius: 2px;
     -webkit-transition: all 0.3s;
     transition: all 0.3s;
@@ -136,6 +187,7 @@ nav ul {
     padding: .5em 1em .5em .25em;
     width: 100%;
     border-left: 2px solid transparent;
+    font-size: 1.2rem;
 }
 
 .dropdown li a:hover {
@@ -166,7 +218,6 @@ nav ul {
 
 .degrees li a {
     margin-top: .75em;
-    font-size: .9em;
     padding-right: 2em;
 }
 
@@ -195,19 +246,19 @@ nav ul {
     width: 100%;
 }
 
-.hero-content {}
+.hero-content,
+.degrees-container {
+    font-family: 'Roboto Slab', serif;
+}
 
 .hero-title {
     color: white;
     position: relative;
-    /*top: 8rem*/
     top: 8rem;
-    /*font-size: 1rem*/
     font-size: 1rem;
     left: 0;
     padding: 2rem;
     padding-left: 5rem;
-    /*line-height: 3rem*/
     line-height: 3rem;
     background-color: rgba(255, 255, 255, .1);
     display: inline-block;
@@ -223,15 +274,11 @@ nav ul {
 
 .intro {
     position: absolute;
-    /*width: 60rem*/
     width: 60rem;
     padding: 1.5rem;
-    /*font-size: 1.2rem*/
     font-size: 1.2rem;
-    /*right: 10%*/
     right: 10%;
-    top: 10rem;
-    font-family: 'Roboto Slab', serif;
+    top: 8rem;
     background-color: rgba(255, 255, 255, .2);
     -webkit-box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.75);
     box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.75);
@@ -250,8 +297,9 @@ nav ul {
 .intro-text {
     text-indent: 2em;
     padding-bottom: 2em;
-    color: rgb(200, 200, 200);
+    color: rgb(225, 225, 225);
     text-align: left;
+    font-size: 1.3rem;
 }
 
 .intro-title-container {
@@ -291,6 +339,8 @@ nav ul {
     position: relative;
     padding: 2em 4em;
     text-indent: 2em;
+    color: black;
+    background-color: rgba(225, 225, 225, .7);
 }
 
 .quote::before,
@@ -319,55 +369,217 @@ nav ul {
     display: block;
 }
 
-.staff {}
-
-.test {
-    display: inline-block;
-    width: 100px;
-}
-
 .arrow-down-container {
     position: absolute;
-    left: 12rem;
-    color: #F36E21;
+    left: 10rem;
+    color: white;
     top: 23rem;
+    text-align: center;
+    -webkit-animation: arrow 1.5s ease-in-out infinite;
+    animation: arrow 1.5s ease-in-out infinite;
 }
 
 .arrow-down-text {
-    font-size: 1rem;
-}
-
-.arrow-down::after {
-    content: "";
-    width: .7rem;
-    height: .7rem;
-    position: absolute;
-    border-right: 2px solid rgb(200, 200, 200);
-    border-bottom: 2px solid rgb(200, 200, 200);
-    left: 4.7rem;
-    -webkit-transform: rotate(45deg);
-    transform: rotate(45deg);
-    -webkit-animation: 2.5s arrow infinite ease;
-    animation: 2.5s arrow infinite ease;
+    font-size: 1.2rem;
+    margin-bottom: .5em;
 }
 
 @-webkit-keyframes arrow {
-    0%,
-    100% {
-        top: 20px;
+    0% {
+        top: 23rem;
     }
     50% {
-        top: 30px;
+        top: 24rem;
     }
 }
 
 @keyframes arrow {
-    0%,
-    100% {
-        top: 20px;
+    0% {
+        top: 23rem;
     }
     50% {
-        top: 30px;
+        top: 24rem;
+    }
+}
+
+
+/*DEGREES*/
+
+.degrees-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 7em;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.degrees-title {
+    width: 90%;
+    margin: auto;
+    background-color: rgba(255, 115, 35, .8);
+    padding: .5rem 0;
+    border-bottom: 1px solid rgb(240, 240, 240);
+    margin-bottom: 5rem;
+}
+
+.degrees-title span {
+    font-size: 3rem;
+    background-color: #F36E21;
+    width: 40rem;
+    padding: .5rem;
+    padding-right: 8rem;
+    color: white;
+}
+
+.degrees-subtitle {
+    font-size: 2rem;
+    width: 90%;
+    margin: auto;
+    border-left: 5px solid #00B2B2;
+    padding: .5rem;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+    border-bottom: .5px solid rgb(100, 100, 100);
+}
+
+.to-the-right-to-the-right {
+    text-align: right;
+    border-right: 5px solid #00B2B2;
+    border-left: none;
+}
+
+.degrees-content-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 25rem;
+}
+
+.degrees-content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    position: relative;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    text-align: center;
+    border-left: 2px solid #F36E21;
+    background-color: rgba(0, 0, 0, .2);
+    -webkit-transition: background-color .1s ease-in;
+    -webkit-transition: background-color .1s ease-in;
+    transition: background-color .1s ease-in;
+}
+
+.degrees-content:first-of-type {
+    border: none;
+}
+
+.degrees-content:hover {
+    background-color: rgba(0, 0, 0, .4);
+    cursor: pointer;
+    cursor: hand;
+}
+
+.degrees-content h2 {
+    color: white;
+    position: absolute;
+    top: 5rem;
+    margin: auto;
+    width: 100%;
+    left: 0;
+}
+
+.degrees-content p {
+    font-size: 1.3rem;
+    margin: auto;
+    margin-bottom: 1rem;
+    margin-top: 8rem;
+    width: 30rem;
+}
+
+.degrees-content span {
+    position: absolute;
+    color: #F36E21;
+    bottom: 4rem;
+    left: 0;
+    width: 100%;
+    margin: auto;
+}
+
+.centeredAbsolute {
+    position: absolute;
+    width: 100%;
+    margin: auto;
+    left: 0;
+}
+
+.degrees-content h3 {
+    top: 5rem;
+    -webkit-animation: reveal .4s ease-in 1;
+    animation: reveal .4s ease-in 1;
+}
+
+.degrees-content ul {
+    list-style: none;
+    top: 8rem;
+    -webkit-animation: reveal .4s ease-in 1;
+    animation: reveal .4s ease-in 1;
+}
+
+.degrees-content ul li {
+    margin-bottom: .2rem;
+}
+
+.absoluteCentered {
+    position: absolute;
+    width: 100%;
+    margin: auto;
+    left: 0;
+}
+
+@-webkit-keyframes reveal {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes reveal {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes hover {
+    0% {
+        margin-top: 0;
+    }
+    50% {
+        margin-top: .5rem;
+    }
+}
+
+@keyframes hover {
+    0% {
+        margin-top: 0;
+    }
+    50% {
+        margin-top: .5rem;
     }
 }
 
