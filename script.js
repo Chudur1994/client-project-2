@@ -105,21 +105,6 @@ $(document).ready(function () {
                     "transition": ".2s"
                 });
             });
-
-            // when another degree is click, move the degree name back down by 3rem
-            // and show the information again
-            that.siblings().each(function () {
-                $(this).children(':first').css({
-                    "top": "5rem",
-                    "transition": "all .2s"
-                });
-                $(this).children().not(':first').each(function () {
-                    $(this).css({
-                        "opacity": "1",
-                        "transition": ".2s"
-                    });
-                });
-            });
         }
 
         // shows information about the selected degree
@@ -146,9 +131,20 @@ $(document).ready(function () {
                 list.append(`<li>${value}</li>`);
             });
 
-            // hide everything but the degree title
+            // when another degree is click, move the degree name back down by 3rem
+            // and show the information again
             that.siblings().each(function () {
-                $(this).children("h3, ul").not(':first').each(function () {
+                $(this).children(':first').css({
+                    "top": "5rem",
+                    "transition": "all .2s"
+                });
+                $(this).children().not(':first').each(function () {
+                    $(this).css({
+                        "opacity": "1",
+                        "transition": ".2s"
+                    });
+                });
+                $(this).children("ul, h3").each(function () {
                     $(this).css({
                         "opacity": "0",
                         "transition": ".2s"
