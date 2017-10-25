@@ -1,14 +1,23 @@
 //api:  http://www.ist.rit.edu/api/
-var x = '';
 
-// gets about information
-var getAbout = function () {
-    myXHR('get', {
-        'path': '/about/'
-    }).done((json) => {
-        console.log(json)
-    }); //end myXHR
+const getData = function() {
+  // paths for the api request
+  const paths = ['about', 'degrees', 'minors', 'employment', 'people',
+    'research', 'resources', 'news', 'footer', 'courses'
+  ];
+  $.each(paths, (i, value) => {
+    // if it doesn't exist in local storage... add it
+    if (localStorage.getItem(value) === null) {
+      console.log(`${value} doesn't exist in local storage... adding now`);
+      myXHR('get', {
+        'path': `/${value}/`
+      }).done((json) => {
+        localStorage.setItem(`${value}`, JSON.stringify(json));
+      });
+    }
+  });
 }
+
 
 //myXHR('get', {
 //    'path': '/degrees/undergraduate/'
@@ -57,28 +66,28 @@ var getAbout = function () {
 //    });
 //} //end facMore
 
-/* 
+/*
     AJAX function to get information for us
-    AJAX utility 
-    t = get or post 
-    d = path : /about/ 
+    AJAX utility
+    t = get or post
+    d = path : /about/
 */
 function myXHR(t, d) {
-    return $.ajax({
-        type: t,
-        //information will be changing often
-        cache: false,
-        async: true,
-        dataType: 'json',
-        url: 'proxy/proxy.php',
-        data: d,
-        //happens before sending information
-        beforeSend: function () {}
-    }).always(function () {
-        //happens at end, no matter what
-    }).fail(function () {
-        //handles failures
-        console.log(`Failure with ${d.path}`);
-    });
-    //end my XHR
+  return $.ajax({
+    type: t,
+    //information will be changing often
+    cache: false,
+    async: true,
+    dataType: 'json',
+    url: 'assets/proxy.php',
+    data: d,
+    //happens before sending information
+    beforeSend: function() {}
+  }).always(function() {
+    //happens at end, no matter what
+  }).fail(function() {
+    //handles failures
+    console.log(`Failure with ${d.path}`);
+  });
+  //end my XHR
 }
