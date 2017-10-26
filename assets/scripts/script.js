@@ -9,6 +9,7 @@ $(document).ready(function() {
   createDegrees("undergraduate");
   createDegrees('graduate');
 
+  // ---------------------------- degrees functionality ----------------------------
   const menu = $('.menu');
   /* background and nav are selected using vanilla javascript
   query selector because JQuery doesn't have a getBoundingClientRect()
@@ -77,153 +78,34 @@ $(document).ready(function() {
     topSpacing: 0
   });
 
-  // create h3 element to user later in degrees container
-  const concentration = $('<h3>Concentrations</h3>');
-  const concentrationArr = [
-    ['WEB APPLICATION DEVELOPMENT', 'MOBILE APPLICATION DEVELOPMENT', 'WEARABLE AND UBIQUITOUS COMPUTING', 'DATABASE', 'PROJECT LIFE CYCLE'],
-    ['WEB APPLICATION DEVELOPMENT', 'MOBILE APPLICATION DEVELOPMENT', 'WEARABLE AND UBIQUITOUS COMPUTING', 'DATABASE', 'PROJECT LIFE CYCLE']
-  ];
 
-  console.log(concentrationArr);
-  // degrees functionality
+  // ---------------------------- degrees functionality ----------------------------
   const degrees = $('.degrees-content-container');
 
-  // degrees click handler
-  const handleDegreeClick = function() {
-    /*i should learn a more elegand way of assigning 'this'...*/
-    // that == 'degrees-content'
-    const that = $(this);
-
-    // changes the size of the clicked degree container
-    const changeSize = function(flex) {
-      that.css({
-        "flex": flex,
-        "background-color": "rgba(0, 0, 0, .4)",
-        "transition": "all .2s"
-      });
-      that.siblings().css({
-        "flex": 1,
-        "background-color": "rgba(0, 0, 0, .2)",
-        "transition": "all .2s"
-      });
-    }
-
-    // hide old information about the clicked degree
-    const hideOld = function() {
-      // move the degree name up by 3rems
-      that.children(':first').css({
-        "top": "2rem",
-        "transition": "all .2s"
-      });
-
-      // hide the rest of the information in the degree container
-      that.children().not(':first').each(function() {
-        $(this).css({
-          "opacity": "0",
-          "transition": ".2s"
-        });
-      });
-    }
-
-    // shows new information about the selected degree
-    const showNew = function() {
-      // when another degree is click, move the degree name back down by 3rem
-      // and show the information again
-      that.siblings().each(function() {
-        $(this).children(':first').css({
-          "top": "5rem",
-          "transition": "all .2s"
-        });
-        $(this).children().not(':first').each(function() {
-          $(this).css({
-            "opacity": "1",
-            "transition": ".2s"
-          });
-        });
-        $(this).children("ul, h3").each(function() {
-          $(this).css({
-            "opacity": "0",
-            "transition": ".2s"
-          });
-        });
-      });
-    }
-
+  const degreesClickHandler = function() {
     if ($(this).parent().parent().hasClass("degrees-undergraduate")) {
-      changeSize("1.4");
-      hideOld();
-      showNew();
+      $(this).siblings().removeClass('degrees-content-active');
+      $(this).addClass('degrees-content-active');
+
+      $(this).children("h3, ul").addClass("degrees-content-open");
+      $(this).siblings().children("h3, ul").removeClass("degrees-content-open");
+
+      $(this).children("p, span").addClass("degrees-content-description-span-inactive");
+      $(this).siblings().children("p, span").removeClass("degrees-content-description-span-inactive")
     } else if ($(this).parent().parent().hasClass("degrees-graduate")) {
-      changeSize("1.4");
-      hideOld();
-      showNew();
-    }
-  }
+      $(this).siblings().removeClass('degrees-content-active');
+      $(this).addClass('degrees-content-active');
 
-  const degreeHandleClick = function(event) {
-    event.preventDefault();
-    const that = $(this);
+      $(this).children("h3, ul").addClass("degrees-content-open");
+      $(this).siblings().children("h3, ul").removeClass("degrees-content-open");
 
-    $(this).find('p, ul, span').fadeToggle();
-
-    const title = $(this).find('h2');
-
-    const moveTitle = function() {
-      if (title.hasClass('isDown')) {
-        title.stop().animate({
-          top: "2rem"
-        });
-      } else {
-        title.stop().animate({
-          top: "5rem"
-        });
-      };
-      title.toggleClass("isDown");
-    }
-
-    moveTitle();
-
-
-
-    // $("#arrow_container").click(function(event) {
-    //   event.preventDefault();
-    //   if ($(this).hasClass("isDown")) {
-    //     $("#nav").stop().animate({
-    //       marginTop: "-100px"
-    //     }, 200);
-    //   } else {
-    //     $("#nav").stop().animate({
-    //       marginTop: "0px"
-    //     }, 200);
-    //   }
-    //   $(this).toggleClass("isDown");
-    //   return false;
-    // });
-
-
-    // changes the size of the clicked degree container
-    const changeSize = function(flex) {
-      that.css({
-        "flex": flex,
-        "background-color": "rgba(0, 0, 0, .4)",
-        "transition": "all .2s"
-      });
-      that.siblings().css({
-        "flex": 1,
-        "background-color": "rgba(0, 0, 0, .2)",
-        "transition": "all .2s"
-      });
-    }
-
-    if ($(this).parent().parent().hasClass("degrees-undergraduate")) {
-      changeSize("1.4");
-    } else if ($(this).parent().parent().hasClass("degrees-graduate")) {
-      changeSize("1.4");
+      $(this).children("p, span").addClass("degrees-content-description-span-inactive");
+      $(this).siblings().children("p, span").removeClass("degrees-content-description-span-inactive")
     }
   }
 
   // add handler to degrees on click
-  degrees.children().click(degreeHandleClick);
+  degrees.children().click(degreesClickHandler);
 
   // const populateImages = function() {
   //   const img = $('<img/>', {
@@ -276,7 +158,7 @@ const createAbout = function() {
   quote.addClass('quote');
   $('.intro').append(quote);
 
-  const quoteAuthor = $(`<span>${about.quoteAuthor}</span>`);
+  const quoteAuthor = $(`<span>- ${about.quoteAuthor} -</span>`);
   quoteAuthor.addClass('quote-person');
   $('.intro').append(quoteAuthor);
 } // end createAbout
@@ -292,27 +174,16 @@ const createDegrees = function(degreeType) {
       const div = $('<div></div>');
       div.addClass('degrees-content');
 
-      // 'Concentrations' h3 sub-title
-      const concentration = $('<h3>Concentrations</h3>');
-      concentration.addClass('degrees-will-show');
-      $(div).append(concentration);
-
       // title
       const title = $(`<h2>${value.title}</h2>`);
-      title.addClass('isDown');
       $(div).append(title);
 
-      // description
-      const description = $(`<p>${value.description}</p>`);
-      $(div).append(description);
-
-      // find out more
-      const learnMore = $('<span>Click to find out more.</span>');
-      $(div).append(learnMore);
+      // 'Concentrations' h3 sub-title
+      const concentration = $('<h3>Concentrations</h3>');
+      $(div).append(concentration);
 
       // concentrations unordered list
       const concentrations = $("<ul></ul>");
-      concentrations.addClass('degrees-will-show');
 
       // get concentrations array from api
       const concentrationList = value.concentrations;
@@ -322,6 +193,15 @@ const createDegrees = function(degreeType) {
         concentrations.append(`<li>${value}</li>`);
       });
       $(div).append(concentrations);
+
+      // description
+      const description = $(`<p>${value.description}</p>`);
+      $(div).append(description);
+
+      // find out more
+      const learnMore = $('<span>Click to find out more.</span>');
+      $(div).append(learnMore);
+
 
       //will add the div to either '.degrees-undergraduate' or '.degrees-graduate'
       $(`.degrees-${degreeType} > .degrees-content-container`).append(div);

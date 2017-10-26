@@ -82,9 +82,12 @@ function myXHR(t, d) {
     url: 'assets/proxy.php',
     data: d,
     //happens before sending information
-    beforeSend: function() {}
+    beforeSend: function() {
+      $('<img src="gears.gif" id="spinner" style="position:relative;top:50px;left:50px;z-index:2000"/>').appendTo("body");
+    }
   }).always(function() {
     //happens at end, no matter what
+    $("#spinner").remove();
   }).fail(function() {
     //handles failures
     console.log(`Failure with ${d.path}`);
